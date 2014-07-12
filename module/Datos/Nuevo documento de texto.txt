@@ -1,0 +1,33 @@
+<?php
+ namespace Datos;
+
+ // Add these import statements:
+ use Datos\Model\Datos;
+ use Datos\Model\DatosTable;
+ use Zend\Db\ResultSet\ResultSet;
+ use Zend\Db\TableGateway\TableGateway;
+
+ class Module
+ {
+     // getAutoloaderConfig() and getConfig() methods here
+
+     // Add this method:
+     public function getServiceConfig()
+     {
+         return array(
+             'factories' => array(
+                 'Datos\Model\Tabla' =>  function($sm) {
+                     $tableGateway = $sm->get('DatosTableGateway');
+                     $table = new Tabla($tableGateway);
+                     return $table;
+                 },
+                 'DatosTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Datos());
+                     return new TableGateway('datos', $dbAdapter, null, $resultSetPrototype);
+                 },
+             ),
+         );
+     }
+ }
