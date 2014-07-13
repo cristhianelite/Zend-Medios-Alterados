@@ -1,4 +1,4 @@
-<h1><?php echo $this->translate('Ha ocurrido un error 404') ?></h1>
+<h1><?php echo $this->translate('A 404 error occurred') ?></h1>
 <h2><?php echo $this->message ?></h2>
 
 <?php if (isset($this->reason) && $this->reason): ?>
@@ -7,19 +7,19 @@
 $reasonMessage= '';
 switch ($this->reason) {
     case 'error-controller-cannot-dispatch':
-        $reasonMessage = $this->translate('El controlador solicitado no fue capaz de enviar la solicitud.');
+        $reasonMessage = $this->translate('The requested controller was unable to dispatch the request.');
         break;
     case 'error-controller-not-found':
-        $reasonMessage = $this->translate('El controlador solicitada no puede ser asignada a una clase de controlador existente.');
+        $reasonMessage = $this->translate('The requested controller could not be mapped to an existing controller class.');
         break;
     case 'error-controller-invalid':
-        $reasonMessage = $this->translate('El controlador requerido no era gestionable.');
+        $reasonMessage = $this->translate('The requested controller was not dispatchable.');
         break;
     case 'error-router-no-match':
-        $reasonMessage = $this->translate('La URL solicitada no puede ser igualada por enrutamiento.');
+        $reasonMessage = $this->translate('The requested URL could not be matched by routing.');
         break;
     default:
-        $reasonMessage = $this->translate('No podemos determinar en este momento por qué un 404 se generó.');
+        $reasonMessage = $this->translate('We cannot determine at this time why a 404 was generated.');
         break;
 }
 ?>
@@ -38,7 +38,7 @@ if (isset($this->controller_class)
     && $this->controller_class
     && $this->controller_class != $this->controller
 ) {
-    echo '(' . sprintf($this->translate('resolver a %s'), $this->escapeHtml($this->controller_class)) . ')';
+    echo '(' . sprintf($this->translate('resolves to %s'), $this->escapeHtml($this->controller_class)) . ')';
 }
 ?>
 </dd>
@@ -53,11 +53,11 @@ if (isset($this->controller_class)
 <h2><?php echo $this->translate('Additional information') ?>:</h2>
 <h3><?php echo get_class($this->exception); ?></h3>
 <dl>
-    <dt><?php echo $this->translate('Archivo') ?>:</dt>
+    <dt><?php echo $this->translate('File') ?>:</dt>
     <dd>
         <pre class="prettyprint linenums"><?php echo $this->exception->getFile() ?>:<?php echo $this->exception->getLine() ?></pre>
     </dd>
-    <dt><?php echo $this->translate('Mensaje') ?>:</dt>
+    <dt><?php echo $this->translate('Message') ?>:</dt>
     <dd>
         <pre class="prettyprint linenums"><?php echo $this->exception->getMessage() ?></pre>
     </dd>
@@ -77,11 +77,11 @@ if (isset($this->controller_class)
     <li>
         <h3><?php echo get_class($e); ?></h3>
         <dl>
-            <dt><?php echo $this->translate('Archivos') ?>:</dt>
+            <dt><?php echo $this->translate('File') ?>:</dt>
             <dd>
                 <pre class="prettyprint linenums"><?php echo $e->getFile() ?>:<?php echo $e->getLine() ?></pre>
             </dd>
-            <dt><?php echo $this->translate('Mensaje') ?>:</dt>
+            <dt><?php echo $this->translate('Message') ?>:</dt>
             <dd>
                 <pre class="prettyprint linenums"><?php echo $e->getMessage() ?></pre>
             </dd>

@@ -1,0 +1,47 @@
+<?php
+ $title = 'Acceso a Datos';
+ $this->headTitle($title);
+ ?>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+					<a href="<?php echo $this->url('album', array('action'=>'add'));?>" class="btn btn-success">
+							<span class="glyphicon glyphicon-plus"></span> Agregar datos
+					</a>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-striped">
+                     <tr>
+                        <th>Titulo</th>
+                        <th>Artista</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <?php foreach($albums as $album) : ?>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($album->title);?></td>
+                        <td><?php echo $this->escapeHtml($album->artist);?></td>
+                        <td>
+                            <a href="<?php echo $this->url('album', array('action'=>'edit', 'id' => $album->id));?>" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-pencil"></span> Editar
+                            </a>
+                            <a href="<?php echo $this->url('album', array('action'=>'delete', 'id' => $album->id));?>" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-trash"></span> Borrar
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+

@@ -1,35 +1,32 @@
 <?php echo $this->doctype(); ?>
 
-<html lang="es">
+<html lang="en">
     <head>
-        <meta charset="ISO-8859-1">
-        <?php echo $this->headTitle('Framework '. $this->translate('Cristhian Ceballos'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Cristhian Ceballos - ' . $this->translate('Pruebas En Zend'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
-        <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('Content-Type','text/html; charset=utf-8') 
-        ?>
-		
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+                ->prependStylesheet($this->basePath() . '/css/StickyNotes.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                ->prependStylesheet($this->basePath() . '/css/style.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+        ?>
 
         <!-- Scripts -->
-        <?php echo $this->headScript()
-            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-            ->prependFile($this->basePath() . '/js/jquery.min.js')
-            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
+        <?php
+        echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/jquery.min.js')
+                ->appendFile($this->basePath() . '/js/custom.js')
+        ?>
 
     </head>
     <body>
-        
-		
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -46,7 +43,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Inicio');?></a>
                     </li>
-                    <li><a href="<?php echo $this->url('datos') ?>"><?php echo $this->translate('Base de Datos (CRUD)') ?></a>
+                    <li><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Base de Datos (CRUD)') ?></a>
+                    </li>
+                    <li><a href="<?php echo $this->url('stickynotes') ?>"><?php echo $this->translate('Notas Adhesivas') ?></a>
                     </li>
                     <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Contacto') ?></a>
                     </li>
@@ -56,14 +55,13 @@
         </div>
         <!-- /.container -->
     </nav>
-		
         <div class="container">
-            <?php echo $this->content; ?>
+<?php echo $this->content; ?>
             <hr>
             <footer>
                 <p>&copy; 2014 - <?php echo date('Y') ?> Por Cristhian Ceballos. <?php echo $this->translate('Derechos Reservados.') ?></p>
             </footer>
         </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
+<?php echo $this->inlineScript() ?>
     </body>
 </html>

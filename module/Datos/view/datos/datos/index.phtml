@@ -1,22 +1,48 @@
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('%s Otra web %s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo $this->texto ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
-</div>
+<?php
+ $title = 'Acceso a Datos';
+ $this->headTitle($title);
+ var_dump($datos);
+  ?>
 
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
+                <h3 class="panel-title">
+                    <a href="<?php echo $this->url('datos', array('action'=>'add'));?>">Agregar datos</a>
+                </h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('montado con php 5.5 %s Aqui va un link %s'),'<a href="trabajos.phtml">','</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
+                <table class="table table-bordered table-striped">
+                     <tr>
+						<th>Nombre</th>
+						<th>Foto</th>
+						<th>Edad</th>
+						<th>Fecha</th>
+						<th>&nbsp;</th>
+					</tr>
+					<?php foreach($datos as $datosx) : ?>
+					<tr>
+						<td><?php echo $this->escapeHtml($datosx->nombre);?></td>
+						<td><?php echo $this->escapeHtml($datosx->foto);?></td>
+						<td><?php echo $this->escapeHtml($datosx->edad);?></td>
+						<td><?php echo $this->escapeHtml($datosx->fecha);?></td>
+						<td>
+							<a href="<?php echo $this->url('datos',
+								array('action'=>'edit', 'id' => $datosx->id));?>">Edit</a>
+							<a href="<?php echo $this->url('datos',
+								array('action'=>'delete', 'id' => $datosx->id));?>">Delete</a>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+                </table>
             </div>
         </div>
     </div>
 
     
 </div>
+
+
+

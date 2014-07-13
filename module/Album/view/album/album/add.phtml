@@ -1,0 +1,32 @@
+<?php
+$title = 'Agregando Album';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+					Agregar datos
+                </h3>
+            </div>
+            <div class="panel-body">
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('album', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form) . PHP_EOL;
+echo $this->formHidden($form->get('id')) . PHP_EOL;
+echo $this->formRow($form->get('title')) . PHP_EOL .'<br />';
+echo $this->formRow($form->get('artist')) . PHP_EOL .'<br />';
+echo $this->formInput($form->get('submit')) . PHP_EOL;
+echo $this->form()->closeTag($form) . PHP_EOL;
+?>
+			</div>
+		</div>
+	</div>
+</div>
+
