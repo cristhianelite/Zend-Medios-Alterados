@@ -8,3 +8,7 @@ Este es un ejemplo de las tecnologías que utilizo para programar en Zend y PHP 
 Secciones
 ------------
 La presentación, acceso a Base de Datos, Funciones PHP 5.5 y Contacto, con algo de diseño responsivo y css
+
+Link
+---------
+Puede ver el proyecto en línea en: http://zend.elite-publicidad.com/public
